@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.newTask">
+
+    <ImageButton
+        android:id="@+id/backbutton"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/transparent"
+        android:contentDescription="Back"
+        android:foreground="?android:selectableItemBackgroundBorderless"
+        android:src="@drawable/back"
+        app:layout_constraintBottom_toTopOf="@+id/currentTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/pin"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/transparent"
+        android:contentDescription="Back"
+        android:foreground="?android:selectableItemBackgroundBorderless"
+        android:src="@drawable/pin"
+        app:layout_constraintEnd_toStartOf="@+id/alert"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/alert"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/transparent"
+        android:contentDescription="Back"
+        android:foreground="?android:selectableItemBackgroundBorderless"
+        android:src="@drawable/alert"
+        app:layout_constraintEnd_toStartOf="@+id/sendButon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/sendButon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/transparent"
+        android:contentDescription="Send"
+        android:foreground="?android:selectableItemBackgroundBorderless"
+        android:src="@drawable/send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/currentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:text="16 September 7:33 PM | O Characters"
+        app:layout_constraintBottom_toTopOf="@+id/Title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backbutton" />
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/Title"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/transparent"
+        android:drawableStart="@drawable/note"
+        android:drawablePadding="5dp"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/emotion"
+        android:hint="Title"
+        android:maxHeight="40dp"
+        android:textAlignment="viewStart"
+        android:textColor="@color/teal_700"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentTime" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/teal_700"
+        android:text="Save"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentTime" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/taskValueLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Start Typing.."
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxStrokeColor="@color/teal_700"
+        app:boxStrokeWidth="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/taskValue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/transparent"
+            android:fontFamily="@font/emotion"
+            android:gravity="top|left"
+            android:lines="20"
+            android:minLines="5"
+            android:singleLine="false"
+            android:textSize="23sp"
+            tools:ignore="RtlHardcoded" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

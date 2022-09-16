@@ -3,17 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:theme="@style/Theme.Keep"
     android:layout_height="match_parent"
     tools:context=".Activity.signup">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/AppIcon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="100dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@mipmap/ic_launcher_foreground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,26 +26,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="30dp"
         android:gravity="center_horizontal"
         android:hint="Username"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
-        app:boxStrokeColor="#009688"
+        app:boxStrokeColor="@color/teal_700"
         app:boxStrokeWidth="2dp"
-        app:hintTextColor="#009688"
+        app:hintTextColor="@color/teal_700"
         app:layout_constraintTop_toBottomOf="@+id/AppIcon"
         app:startIconDrawable="@drawable/user"
-        app:startIconTint="#009688">
+        app:startIconTint="@color/teal_700">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/UserName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="0dp"
             android:inputType="textPersonName"
-            android:textSize="20dp" />
+            android:padding="0dp"
+            android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -57,20 +58,20 @@
         android:layout_marginEnd="30dp"
         android:gravity="center_horizontal"
         android:hint="Email ID"
-        app:boxStrokeColor="#009688"
+        app:boxStrokeColor="@color/teal_700"
         app:boxStrokeWidth="2dp"
-        app:hintTextColor="#009688"
+        app:hintTextColor="@color/teal_700"
         app:layout_constraintTop_toBottomOf="@+id/Username"
         app:startIconDrawable="@drawable/email"
-        app:startIconTint="#009688">
+        app:startIconTint="@color/teal_700">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/EmailId"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="0dp"
             android:inputType="textEmailAddress"
-            android:textSize="20dp" />
+            android:padding="0dp"
+            android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -84,18 +85,18 @@
         android:hint="Password"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
-        app:boxStrokeColor="#009688"
+        app:boxStrokeColor="@color/teal_700"
         app:boxStrokeWidth="2dp"
         app:endIconMode="password_toggle"
-        app:endIconTint="#009688"
-        app:hintTextColor="#009688"
+        app:endIconTint="@color/teal_700"
+        app:hintTextColor="@color/teal_700"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailLayout"
         app:startIconDrawable="@drawable/password"
-        app:startIconTint="#009688">
+        app:startIconTint="@color/teal_700">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password"
+            android:id="@+id/taskValue"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textPassword"
@@ -104,19 +105,19 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/signButton"
+        android:id="@+id/Login"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_marginTop="80dp"
-        app:icon="@drawable/login"
-        android:drawableTint="#009688"
-        android:padding="0dp"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="30dp"
-        android:text="ACCESS"
-        android:textSize="25sp"
-        app:backgroundTint="#009688"
+        android:drawableTint="@color/teal_700"
+        android:padding="0dp"
+        android:text="Create new Account"
+        android:textSize="20sp"
+        app:backgroundTint="@color/teal_700"
+        app:icon="@drawable/login"
         app:layout_constraintTop_toBottomOf="@+id/passwordLayout"
         tools:layout_editor_absoluteX="30dp" />
 
@@ -125,15 +126,15 @@
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"
         android:drawableTint="@color/transparent"
         android:padding="0dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
         android:text="Already have An Account?"
         android:textSize="15sp"
-        app:backgroundTint="#009688"
+        app:backgroundTint="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signButton"
+        app:layout_constraintTop_toBottomOf="@+id/Login"
         tools:layout_editor_absoluteX="30dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
