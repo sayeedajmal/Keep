@@ -8,19 +8,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.strong.keep.Adopter.DoneTaskAdopter;
-import com.strong.keep.Adopter.TaskAdopter;
-import com.strong.keep.GetSet.DoneTaskGetter;
+import com.strong.keep.GetSet.listTaskGetter;
 import com.strong.keep.databinding.FragmentRecyclerBinding;
 
 import java.util.ArrayList;
 
-public class DoneTask extends Fragment {
+public class ListTaskFragment extends Fragment {
 
-    ArrayList<DoneTaskGetter> taskList;
+    ArrayList<listTaskGetter> taskList;
     FragmentRecyclerBinding RecyclerBind;
 
     @Nullable
@@ -30,11 +27,14 @@ public class DoneTask extends Fragment {
 
         taskList = new ArrayList<>();
 
-        taskList.add(new DoneTaskGetter("DSA"));
-        taskList.add(new DoneTaskGetter("JAVA"));
+        taskList.add(new listTaskGetter(true, "Web Development"));
+        taskList.add(new listTaskGetter(false, "Dart"));
+        taskList.add(new listTaskGetter(true, "C++"));
+        taskList.add(new listTaskGetter(false, "JavaFx"));
+        taskList.add(new listTaskGetter(true, "Android Studio"));
 
 
-        DoneTaskAdopter taskAdopter = new DoneTaskAdopter(taskList, getContext());
+        com.strong.keep.Adopter.ListTask taskAdopter = new com.strong.keep.Adopter.ListTask(taskList, getContext());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
 
         RecyclerBind.RecyclerView.setLayoutManager(layoutManager);

@@ -3,22 +3,13 @@ package com.strong.keep.Fragment;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.google.android.flexbox.AlignContent;
-import com.google.android.flexbox.FlexDirection;
-import com.google.android.flexbox.FlexWrap;
-import com.google.android.flexbox.FlexboxLayoutManager;
-import com.google.android.flexbox.JustifyContent;
 import com.strong.keep.Adopter.TaskAdopter;
 import com.strong.keep.GetSet.TaskGetter;
 import com.strong.keep.databinding.FragmentRecyclerBinding;
@@ -46,6 +37,7 @@ public class Task extends Fragment {
 
         taskList.add(new TaskGetter("DSA", "This is the View of DSA."));
         taskList.add(new TaskGetter("JAVA", "Java is the Object-Oriented Programming Language. If You Can Do all Thing! Choose Java"));
+        taskList.add(new TaskGetter("Android Studio", "We are Creating Application with the help of Android Studio."));
 
 
         TaskAdopter taskAdopter = new TaskAdopter(taskList, getContext());

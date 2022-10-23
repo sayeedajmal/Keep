@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import com.strong.keep.databinding.ActivitySignupBinding;
 
-public class signup extends AppCompatActivity {
+public class signupActivitiy extends AppCompatActivity {
     ActivitySignupBinding BindSignup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +16,7 @@ public class signup extends AppCompatActivity {
         setContentView(BindSignup.getRoot());
 
         BindSignup.goLogin.setOnClickListener(e->{
-            startActivity(new Intent(this,Login.class));
+            startActivity(new Intent(this, LoginActivity.class));
             finish();
         });
     }

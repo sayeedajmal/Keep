@@ -22,7 +22,7 @@ public class Login extends AppCompatActivity {
             finish();
         });
 
-        BindLogin.Login.setOnClickListener(e -> {
+        BindLogin.Signup.setOnClickListener(e -> {
             startActivity(new Intent(this, Dashboard.class));
             finish();
         });
