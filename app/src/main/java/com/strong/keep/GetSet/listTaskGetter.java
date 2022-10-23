@@ -1,15 +1,14 @@
 package com.strong.keep.GetSet;
 
-public class DoneTaskGetter {
-    String TaskSummery;
+public class listTaskGetter {
+    String ListValue;
 
-
-    public String getTaskSummery() {
-        return TaskSummery;
+    public String getListValue() {
+        return ListValue;
     }
 
-    public DoneTaskGetter( String TaskSummery) {
-        this.TaskSummery = TaskSummery;
+    public listTaskGetter(String ListValue) {
+        this.ListValue = ListValue;
     }
 
 }

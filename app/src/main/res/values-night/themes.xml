@@ -14,4 +14,9 @@
         <item name="cardBackgroundColor">#A3009688</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="DialogAnim">
+        <item name="android:windowEnterAnimation">@anim/slide_to_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_to_up</item>
+    </style>
 </resources>

@@ -1,5 +1,6 @@
 package com.strong.keep.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,7 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.strong.keep.databinding.ActivitySplashBinding;
 
-public class splash extends AppCompatActivity {
+@SuppressLint("CustomSplashScreen")
+public class splashActivity extends AppCompatActivity {
     ActivitySplashBinding BindSplash;
 
     @Override
@@ -19,7 +21,7 @@ public class splash extends AppCompatActivity {
         setContentView(BindSplash.getRoot());
 
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(this, Login.class));
+            startActivity(new Intent(this, DashActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finishAffinity();
         }, 100);

@@ -5,7 +5,7 @@
     android:theme="@style/Theme.Keep"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Activity.ListActivity">
+    tools:context=".Activity.newListActivity">
 
     <ImageButton
         android:id="@+id/backButton"
@@ -28,7 +28,7 @@
         android:layout_marginTop="45dp"
         android:layout_marginEnd="8dp"
         android:background="@color/transparent"
-        android:contentDescription="Back"
+        android:contentDescription="Pin"
         android:foreground="?android:selectableItemBackgroundBorderless"
         android:src="@drawable/pin"
         app:layout_constraintEnd_toStartOf="@+id/alert"
@@ -41,14 +41,14 @@
         android:layout_marginTop="45dp"
         android:layout_marginEnd="8dp"
         android:background="@color/transparent"
-        android:contentDescription="Back"
+        android:contentDescription="Alert"
         android:foreground="?android:selectableItemBackgroundBorderless"
         android:src="@drawable/alert"
-        app:layout_constraintEnd_toStartOf="@+id/sendButon"
+        app:layout_constraintEnd_toStartOf="@+id/sendButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/sendButon"
+        android:id="@+id/sendButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="45dp"
@@ -78,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/backButton">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/TypeList"
+            android:id="@+id/ListValue"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/transparent"
@@ -107,7 +107,7 @@
         app:layout_constraintTop_toBottomOf="@+id/listLayout" />
 
     <Button
-        android:id="@+id/Signup"
+        android:id="@+id/Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

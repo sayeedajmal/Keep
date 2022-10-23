@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.13099520383693045" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.182" />
         <entry key="app/src/main/res/drawable/alert.xml" value="0.182" />
         <entry key="app/src/main/res/drawable/back.xml" value="0.182" />
@@ -21,17 +22,24 @@
         <entry key="app/src/main/res/drawable/stroke.xml" value="0.162" />
         <entry key="app/src/main/res/drawable/task.xml" value="0.167" />
         <entry key="app/src/main/res/drawable/user.xml" value="0.182" />
-        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.22395833333333334" />
+        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_don_task.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_list.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_listactivity.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_new_list.xml" value="0.22239583333333332" />
         <entry key="app/src/main/res/layout/activity_new_task.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.22395833333333334" />
-        <entry key="app/src/main/res/layout/activity_task_list.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_task_list.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/custom_toast.xml" value="0.221875" />
+        <entry key="app/src/main/res/layout/fragment_bottom_dialog.xml" value="0.25047801147227533" />
+        <entry key="app/src/main/res/layout/fragment_list.xml" value="0.21574074074074073" />
         <entry key="app/src/main/res/layout/fragment_recycler.xml" value="0.22395833333333334" />
         <entry key="app/src/main/res/layout/fragment_task.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_task_list.xml" value="0.22395833333333334" />
         <entry key="app/src/main/res/layout/fragment_task_sample.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/write_list.xml" value="0.33" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1275" />
       </map>
     </option>
@@ -41,5 +49,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.221875" />
+      </ProjectState>
+    </option>
   </component>
 </project>

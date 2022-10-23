@@ -1,27 +1,25 @@
 package com.strong.keep.Activity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
-import com.strong.keep.Fragment.ListTaskFragment;
-import com.strong.keep.Fragment.Task;
+import com.strong.keep.Fragment.ListTaskFrag;
+import com.strong.keep.Fragment.TaskFrag;
 import com.strong.keep.R;
+import com.strong.keep.SqlHelper;
 import com.strong.keep.databinding.ActivityDashboardBinding;
-
-import java.util.ArrayList;
-import java.util.List;
+;
 import java.util.Objects;
 
-public class Dashboard extends AppCompatActivity {
+public class DashActivity extends AppCompatActivity {
     ViewPagerSection viewPagerAdaptor;
+    SqlHelper sqlHelper;
     ActivityDashboardBinding BindRecent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +27,12 @@ public class Dashboard extends AppCompatActivity {
         BindRecent = ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(BindRecent.getRoot());
 
-        Task TaskFragment = new Task();
-        ListTaskFragment listFragment = new ListTaskFragment();
+        TaskFrag taskFragFragment = new TaskFrag();
+        ListTaskFrag listFragment = new ListTaskFrag();
 
         viewPagerAdaptor = new ViewPagerSection(getSupportFragmentManager(), 0);
 
-        viewPagerAdaptor.addFragment(TaskFragment);
+        viewPagerAdaptor.addFragment(taskFragFragment);
         viewPagerAdaptor.addFragment(listFragment);
 
         BindRecent.dashboardPager.setAdapter(viewPagerAdaptor);
@@ -43,20 +41,21 @@ public class Dashboard extends AppCompatActivity {
         Objects.requireNonNull(BindRecent.tabLayoutDashboard.getTabAt(0)).setId(0);
         Objects.requireNonNull(BindRecent.tabLayoutDashboard.getTabAt(1)).setIcon(R.drawable.checked);
         Objects.requireNonNull(BindRecent.tabLayoutDashboard.getTabAt(0)).setId(1);
+        sqlHelper = new SqlHelper(this);
 
-
-        BindRecent.newTaskButton.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ResourceType")
-            @Override
-            public void onClick(View v) {
-                if (Objects.requireNonNull(BindRecent.tabLayoutDashboard.getTabAt(0)).isSelected()) {
-                    startActivity(new Intent(Dashboard.this, newTask.class));
-                } else {
-                    startActivity(new Intent(Dashboard.this, ListActivity.class));
-                }
+        BindRecent.newTaskButton.setOnClickListener(v -> {
+            if (Objects.requireNonNull(BindRecent.tabLayoutDashboard.getTabAt(0)).isSelected()) {
+                Intent intent = new Intent(this, newTaskActivity.class);
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(this, newListActivity.class);
+                startActivity(intent);
             }
         });
 
+        BindRecent.goLoginButton.setOnClickListener(v -> {
+            startActivity(new Intent(this, LoginActivity.class));
+        });
     }
 
     @Override

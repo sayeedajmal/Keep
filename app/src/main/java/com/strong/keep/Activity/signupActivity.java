@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import com.strong.keep.databinding.ActivitySignupBinding;
 
-public class signupActivitiy extends AppCompatActivity {
+public class signupActivity extends AppCompatActivity {
     ActivitySignupBinding BindSignup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,10 @@ public class signupActivitiy extends AppCompatActivity {
         BindSignup.goLogin.setOnClickListener(e->{
             startActivity(new Intent(this, LoginActivity.class));
             finish();
+        });
+
+        BindSignup.CreateNew.setOnClickListener(v->{
+            startActivity(new Intent(this, DashActivity.class));
         });
     }
 }

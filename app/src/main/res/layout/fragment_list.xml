@@ -27,12 +27,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="50dp"
-        android:paddingTop="18dp"
         android:paddingStart="5dp"
-        android:text="This is My List Task"
+        android:gravity="center"
+        android:lines="2"
         android:textColor="@color/white"
         android:background="#018786"
         android:textAlignment="textStart"
         android:textSize="20sp"
-        tools:ignore="RtlSymmetry" />
+        tools:ignore="RtlCompat,RtlSymmetry" />
 </androidx.cardview.widget.CardView>

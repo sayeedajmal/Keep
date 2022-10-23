@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import com.strong.keep.databinding.ActivityLoginBinding;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding BindLogin;
 
     @Override
@@ -17,13 +17,13 @@ public class Login extends AppCompatActivity {
         setContentView(BindLogin.getRoot());
 
         BindLogin.goSignUp.setOnClickListener(e -> {
-            startActivity(new Intent(this, signup.class));
+            startActivity(new Intent(this, signupActivity.class));
             overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             finish();
         });
 
-        BindLogin.Signup.setOnClickListener(e -> {
-            startActivity(new Intent(this, Dashboard.class));
+        BindLogin.Login.setOnClickListener(e -> {
+            startActivity(new Intent(this, DashActivity.class));
             finish();
         });
     }

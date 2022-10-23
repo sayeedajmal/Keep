@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.newTask">
+    tools:context=".Activity.newTaskActivity">
 
     <ImageButton
         android:id="@+id/backbutton"
@@ -66,7 +66,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="5dp"
-        android:text="16 September 7:33 PM | O Characters"
         app:layout_constraintBottom_toTopOf="@+id/Title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backbutton" />
@@ -86,12 +85,12 @@
         android:textAlignment="viewStart"
         android:textColor="@color/teal_700"
         android:textSize="22sp"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/saveButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/currentTime" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -102,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/currentTime" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/taskValueLayout"
+        android:id="@+id/listLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -126,7 +125,7 @@
             android:backgroundTint="@color/transparent"
             android:fontFamily="@font/emotion"
             android:gravity="top|left"
-            android:lines="20"
+            android:lines="50"
             android:minLines="5"
             android:singleLine="false"
             android:textSize="23sp"
