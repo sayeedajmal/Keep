@@ -4,11 +4,17 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.strong.keep.R;
 import com.strong.keep.databinding.FragmentBottomDialogBinding;
+
+import java.util.Objects;
 
 
 public class BottomDialogFrag extends Fragment {
@@ -18,8 +24,6 @@ public class BottomDialogFrag extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         BottomDiaBind = FragmentBottomDialogBinding.inflate(inflater, container, false);
-
-        BottomDiaBind.setReminder.setOnClickListener(v -> BottomDiaBind.datePicker.setVisibility(View.VISIBLE));
         return BottomDiaBind.getRoot();
     }
 }

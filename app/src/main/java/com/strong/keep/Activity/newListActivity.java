@@ -1,8 +1,5 @@
 package com.strong.keep.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -10,6 +7,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.strong.keep.R;
 import com.strong.keep.SqlHelper;
 import com.strong.keep.databinding.ActivityNewListBinding;
@@ -19,6 +19,7 @@ import java.util.Objects;
 public class newListActivity extends AppCompatActivity {
     ActivityNewListBinding BindList;
     SqlHelper sqlHelper;
+    int hour, minute, year, monthOfYear, DayOfMonth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,52 @@ public class newListActivity extends AppCompatActivity {
         BindList.backButton.setOnClickListener(e -> onBackPressed());
 
         sqlHelper = new SqlHelper(this);
+
+        BindList.setReminder.setOnClickListener(v -> {
+            BindList.setReminder.setVisibility(View.GONE);
+            BindList.listLayout.setVisibility(View.GONE);
+            BindList.Save.setVisibility(View.GONE);
+
+            BindList.timePicker.setVisibility(View.VISIBLE);
+            BindList.datePicker.setVisibility(View.VISIBLE);
+            BindList.CancelTimer.setVisibility(View.VISIBLE);
+            BindList.DoneTimer.setVisibility(View.VISIBLE);
+        });
+
+        BindList.timePicker.setOnTimeChangedListener((view, hourOfDay, minute) -> {
+            hour = hourOfDay;
+            this.minute = minute;
+            Snackbar.make(findViewById(R.id.listLayout), hourOfDay + ":" + minute, Snackbar.LENGTH_SHORT).show();
+        });
+
+        /*Instance value of Time and Date*/
+        hour = BindList.timePicker.getHour();
+        this.minute = BindList.timePicker.getMinute();
+        this.year = BindList.datePicker.getYear();
+        this.monthOfYear = BindList.datePicker.getMonth();
+        this.DayOfMonth = BindList.datePicker.getDayOfMonth();
+
+        BindList.datePicker.setOnDateChangedListener((view, year, monthOfYear, dayOfMonth) -> {
+            this.year = year;
+            this.monthOfYear = monthOfYear;
+            this.DayOfMonth = dayOfMonth;
+            Snackbar.make(findViewById(R.id.listLayout), dayOfMonth + "/" + monthOfYear + "/" + year, Snackbar.LENGTH_SHORT).show();
+        });
+
+        BindList.DoneTimer.setOnClickListener(v -> showToast("Alarm of " + hour + ":" + minute + " In " + DayOfMonth + "/" + monthOfYear + "/" + year + " Done."));
+
+        BindList.CancelTimer.setOnClickListener(v -> {
+            BindList.setReminder.setVisibility(View.VISIBLE);
+            BindList.listLayout.setVisibility(View.VISIBLE);
+            BindList.Save.setVisibility(View.VISIBLE);
+
+            BindList.timePicker.setVisibility(View.GONE);
+            BindList.datePicker.setVisibility(View.GONE);
+            BindList.CancelTimer.setVisibility(View.GONE);
+            BindList.DoneTimer.setVisibility(View.GONE);
+
+        });
+
         BindList.Save.setOnClickListener(v -> {
             String ListValue = Objects.requireNonNull(BindList.ListValue.getText()).toString();
             if (!ListValue.isEmpty()) {
@@ -35,8 +82,7 @@ public class newListActivity extends AppCompatActivity {
                 if (checkInsertData) {
                     showToast("ListAdded");
                     finish();
-                } else
-                    showToast("Something Error");
+                } else showToast("Something Error");
             } else {
                 showToast("Start Typing for Add");
             }

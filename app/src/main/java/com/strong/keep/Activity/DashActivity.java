@@ -1,10 +1,8 @@
 package com.strong.keep.Activity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.strong.keep.Fragment.ListTaskFrag;
@@ -12,7 +10,6 @@ import com.strong.keep.Fragment.TaskFrag;
 import com.strong.keep.R;
 import com.strong.keep.SqlHelper;
 import com.strong.keep.databinding.ActivityDashboardBinding;
-;
 import java.util.Objects;
 
 public class DashActivity extends AppCompatActivity {
@@ -53,9 +50,7 @@ public class DashActivity extends AppCompatActivity {
             }
         });
 
-        BindRecent.goLoginButton.setOnClickListener(v -> {
-            startActivity(new Intent(this, LoginActivity.class));
-        });
+        BindRecent.goLoginButton.setOnClickListener(v -> startActivity(new Intent(this, LoginActivity.class)));
     }
 
     @Override

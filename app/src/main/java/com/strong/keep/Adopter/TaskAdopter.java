@@ -2,37 +2,28 @@ package com.strong.keep.Adopter;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.textfield.TextInputEditText;
-import com.strong.keep.Activity.newTaskActivity;
 import com.strong.keep.GetSet.TaskGetter;
 import com.strong.keep.R;
 import com.strong.keep.SqlHelper;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class TaskAdopter extends RecyclerView.Adapter<TaskAdopter.RecyclerViewHolder> {
 
     ArrayList<TaskGetter> taskGetter;
     Context context;
     SqlHelper sqlHelper;
-    BottomSheetDialog bottomSheetDialog;
 
     public TaskAdopter(ArrayList<TaskGetter> taskGetter, Context context) {
         this.taskGetter = taskGetter;

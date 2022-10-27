@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.strong.keep.Adopter.ListTaskAdopter;
-import com.strong.keep.GetSet.TaskGetter;
 import com.strong.keep.GetSet.listTaskGetter;
 import com.strong.keep.SqlHelper;
 import com.strong.keep.databinding.FragmentRecyclerBinding;
@@ -37,7 +36,13 @@ public class ListTaskFrag extends Fragment {
 
         /*taskList.add(new listTaskGetter("Web Development"));*/
 
-
+        Cursor res = sqlHelper.SHOW("List");
+        if (res.getCount() > 0) {
+            taskList.clear();
+            while (res.moveToNext()) {
+                taskList.add(new listTaskGetter(res.getString(0)));
+            }
+        }
         ListTaskAdopter taskAdopter = new ListTaskAdopter(taskList, getContext());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         RecyclerBind.RecyclerView.setLayoutManager(layoutManager);
@@ -58,21 +63,5 @@ public class ListTaskFrag extends Fragment {
             RecyclerBind.swipeRefresh.setRefreshing(false);
         });
         return RecyclerBind.getRoot();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        addData();
-    }
-
-    public void addData() {
-        Cursor res = sqlHelper.SHOW("List");
-        if (res.getCount() > 0) {
-            taskList.clear();
-            while (res.moveToNext()) {
-                taskList.add(new listTaskGetter(res.getString(0)));
-            }
-        }
     }
 }

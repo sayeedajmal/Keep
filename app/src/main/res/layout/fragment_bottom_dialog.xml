@@ -7,16 +7,6 @@
     android:theme="@style/Theme.Keep"
     tools:context=".Fragment.BottomDialogFrag">
 
-
-    <DatePicker
-        android:id="@+id/datePicker"
-        android:layout_width="364dp"
-        android:layout_height="350dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/listLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -31,7 +21,7 @@
         app:boxStrokeWidth="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datePicker">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TypeList"
@@ -73,6 +63,4 @@
         app:backgroundTint="@color/teal_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listLayout" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
