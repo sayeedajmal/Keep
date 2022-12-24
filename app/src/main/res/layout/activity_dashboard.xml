@@ -21,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tabGravity="center"
         app:tabIndicatorColor="@color/teal_700"
+        app:tabTextColor="@color/teal_700"
         tools:ignore="MissingConstraints" />
 
     <ImageButton

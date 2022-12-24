@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<soup.neumorphism.NeumorphCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/taskFragFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="3dp"
     android:clickable="true"
-    android:foreground="?android:selectableItemBackgroundBorderless"
     android:maxHeight="200dp"
     android:minHeight="100dp"
-    android:theme="@style/Theme.Keep"
-    app:cardCornerRadius="15dp"
-    app:cardElevation="5dp">
+    android:theme="@style/Theme.Neumorph.Bridge"
+    app:neumorph_lightSource="leftBottom">
 
     <TextView
         android:id="@+id/TaskName"
@@ -20,8 +17,8 @@
         android:background="#CB018786"
         android:fontFamily="@font/emotion"
         android:gravity="center"
-        android:maxWidth="200dp"
         android:lines="1"
+        android:maxWidth="200dp"
         android:maxHeight="50dp"
         android:paddingTop="5dp"
         android:text="Create Folder"
@@ -32,13 +29,13 @@
         android:id="@+id/deleteTask"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:src="@drawable/delete"
-        android:backgroundTint="@color/teal_200"
-        android:layout_marginEnd="3dp"
-        android:visibility="invisible"
-        android:layout_marginTop="3dp"
         android:layout_gravity="end"
-        android:contentDescription="Delete Task" />
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="3dp"
+        android:backgroundTint="@color/teal_200"
+        android:contentDescription="Delete Task"
+        android:src="@drawable/delete"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/TaskValue"
@@ -53,4 +50,4 @@
         android:textSize="18sp" />
 
 
-</androidx.cardview.widget.CardView>
+</soup.neumorphism.NeumorphCardView>
