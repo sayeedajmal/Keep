@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<soup.neumorphism.NeumorphCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/taskFragFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="5dp"
     android:clickable="true"
     android:maxHeight="200dp"
     android:minHeight="100dp"
-    android:theme="@style/Theme.Neumorph.Bridge"
-    app:neumorph_lightSource="leftBottom">
+    android:theme="@style/Theme.Keep"
+    app:cardCornerRadius="20dp">
 
     <TextView
         android:id="@+id/TaskName"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#CB018786"
-        android:fontFamily="@font/emotion"
+        android:fontFamily="@font/trebuc"
         android:gravity="center"
         android:lines="1"
         android:maxWidth="200dp"
         android:maxHeight="50dp"
+        android:paddingStart="5dp"
         android:paddingTop="5dp"
+        android:paddingEnd="5dp"
         android:text="Create Folder"
         android:textColor="@color/white"
         android:textSize="23sp" />
@@ -43,11 +46,11 @@
         android:layout_height="match_parent"
         android:layout_marginTop="45dp"
         android:background="#018786"
-        android:padding="3dp"
+        android:padding="4dp"
         android:text="@string/app_name"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18sp" />
 
 
-</soup.neumorphism.NeumorphCardView>
+</androidx.cardview.widget.CardView>

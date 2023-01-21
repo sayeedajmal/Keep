@@ -1,7 +1,6 @@
 package com.strong.keep.Adopter;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,23 +22,23 @@ import com.strong.keep.SqlHelper;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class ListTaskAdopter extends RecyclerView.Adapter<ListTaskAdopter.RecyclerViewHolder> {
+public class ListAdopter extends RecyclerView.Adapter<ListAdopter.RecyclerViewHolder> {
 
     ArrayList<listTaskGetter> taskGetter;
     Context context;
     SqlHelper sqlHelper;
     BottomSheetDialog bottomSheetDialog;
 
-    public ListTaskAdopter(ArrayList<listTaskGetter> taskGetter, Context context) {
+    public ListAdopter(ArrayList<listTaskGetter> taskGetter, Context context) {
         this.taskGetter = taskGetter;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public ListTaskAdopter.RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ListAdopter.RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_list, parent, false);
-        return new ListTaskAdopter.RecyclerViewHolder(view);
+        return new ListAdopter.RecyclerViewHolder(view);
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,17 +14,21 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.textfield.TextInputEditText;
 import com.strong.keep.GetSet.TaskGetter;
 import com.strong.keep.R;
 import com.strong.keep.SqlHelper;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class TaskAdopter extends RecyclerView.Adapter<TaskAdopter.RecyclerViewHolder> {
 
     ArrayList<TaskGetter> taskGetter;
     Context context;
     SqlHelper sqlHelper;
+    BottomSheetDialog bottomSheetDialog;
 
     public TaskAdopter(ArrayList<TaskGetter> taskGetter, Context context) {
         this.taskGetter = taskGetter;
@@ -33,7 +38,7 @@ public class TaskAdopter extends RecyclerView.Adapter<TaskAdopter.RecyclerViewHo
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_task, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sample_task, parent, false);
         return new RecyclerViewHolder(view);
     }
 
@@ -43,9 +48,10 @@ public class TaskAdopter extends RecyclerView.Adapter<TaskAdopter.RecyclerViewHo
         TaskGetter taskGetter = this.taskGetter.get(position);
         holder.TaskName.setText(taskGetter.getTaskName());
         holder.TaskValue.setText(taskGetter.getTaskSummery());
+
         holder.itemView.setOnLongClickListener(v -> {
             holder.deleteTask.setVisibility(View.VISIBLE);
-            return false;
+            return true;
         });
 
         holder.itemView.setOnClickListener(v -> {
@@ -72,6 +78,7 @@ public class TaskAdopter extends RecyclerView.Adapter<TaskAdopter.RecyclerViewHo
             });
             dialog.setNegativeButton("No", (dialog2, which) -> dialog2.cancel());
             AlertDialog alert = dialog.create();
+            holder.deleteTask.setVisibility(View.INVISIBLE);
             alert.show();
         });
 
@@ -98,28 +105,29 @@ public class TaskAdopter extends RecyclerView.Adapter<TaskAdopter.RecyclerViewHo
     }
 
     private void updateTask(TaskGetter taskGetter) {
-      /*  TextInputEditText value=bottomSheetDialog.findViewById(R.id.TaskValue);
-        assert value != null;
-        String TaskName=taskGetter.getTaskName();
+        bottomSheetDialog = new BottomSheetDialog(context);
+        bottomSheetDialog.setContentView(R.layout.fragment_bottom_dialog);
+        String TaskSummery = taskGetter.getTaskSummery();
+        TextInputEditText newValue = bottomSheetDialog.findViewById(R.id.TypeList);
+        assert newValue != null;
+        newValue.setText(TaskSummery);
 
-        value.setText(taskGetter.getTaskSummery());
-
-        Button update=bottomSheetDialog.findViewById(R.id.update);
-        sqlHelper=new SqlHelper(context.getApplicationContext());
+        Button update = bottomSheetDialog.findViewById(R.id.update);
+        sqlHelper = new SqlHelper(context.getApplicationContext());
         assert update != null;
-        update.setOnClickListener(v->{
-            if (Objects.requireNonNull(value.getText()).length()==0){
+        update.setOnClickListener(v -> {
+            if (Objects.requireNonNull(newValue.getText()).length() == 0) {
                 Toast.makeText(context.getApplicationContext(), "Can't Update Empty List", Toast.LENGTH_SHORT).show();
-            }else{
-                boolean checkUpdate=sqlHelper.UpdateTask("Task",TaskName, value.getText().toString());
-                if (checkUpdate){
+            } else {
+                boolean checkUpdate = sqlHelper.UpdateTask("Task", TaskSummery, newValue.getText().toString());
+                if (checkUpdate) {
                     Toast.makeText(context.getApplicationContext(), "Task Updated", Toast.LENGTH_SHORT).show();
                     bottomSheetDialog.dismiss();
-                }else
+                } else
                     Toast.makeText(context.getApplicationContext(), "Task Not Updated", Toast.LENGTH_SHORT).show();
             }
         });
-        */
-        Toast.makeText(context.getApplicationContext(), "Update Feature is Coming", Toast.LENGTH_SHORT).show();
+        bottomSheetDialog.show();
+        bottomSheetDialog.setOnDismissListener(dialog -> bottomSheetDialog.dismiss());
     }
 }

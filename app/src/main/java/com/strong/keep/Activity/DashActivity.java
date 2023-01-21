@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
 import com.strong.keep.Fragment.ListTaskFrag;
 import com.strong.keep.Fragment.TaskFrag;
 import com.strong.keep.R;
 import com.strong.keep.SqlHelper;
 import com.strong.keep.databinding.ActivityDashboardBinding;
+
 import java.util.Objects;
 
 public class DashActivity extends AppCompatActivity {
@@ -51,6 +53,23 @@ public class DashActivity extends AppCompatActivity {
         });
 
         BindRecent.goLoginButton.setOnClickListener(v -> startActivity(new Intent(this, LoginActivity.class)));
+
+        initSearch();
+    }
+
+    private void initSearch() {
+        BindRecent.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                System.out.println("<<<<<<<<<<<<<" + newText);
+                return true;
+            }
+        });
     }
 
     @Override

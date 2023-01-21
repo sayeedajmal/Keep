@@ -6,11 +6,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-
-import java.util.List;
 
 
 public class SqlHelper extends SQLiteOpenHelper {
@@ -53,6 +50,10 @@ public class SqlHelper extends SQLiteOpenHelper {
         return DB.rawQuery("select * from " + TableName, null);
     }
 
+    /*Search Task*/
+    public String searchTask(String TableName){
+        return "Select";
+    }
     /*Delete Task*/
     public Boolean DeleteTask(String TableName, String TaskValue) {
         SQLiteDatabase DB = this.getWritableDatabase();
@@ -76,11 +77,11 @@ public class SqlHelper extends SQLiteOpenHelper {
     }
 
     /* Update Task*/
-    public Boolean UpdateTask(String TableName, String TaskName, String NewValue){
+    public Boolean UpdateTask(String TableName, String PreviousValues, String NewValue){
         SQLiteDatabase DB=this.getWritableDatabase();
         ContentValues values=new ContentValues();
         values.put("TaskValue",NewValue);
-        long result=DB.update(TableName, values,"TaskValue=?", new String[]{TaskName});
+        long result=DB.update(TableName, values,"TaskValue=?", new String[]{PreviousValues});
         return result != -1;
     }
     /*:Update List */

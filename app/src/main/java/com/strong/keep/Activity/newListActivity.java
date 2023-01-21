@@ -19,7 +19,7 @@ import java.util.Objects;
 public class newListActivity extends AppCompatActivity {
     ActivityNewListBinding BindList;
     SqlHelper sqlHelper;
-    int hour, minute, year, monthOfYear, DayOfMonth;
+    static int hour, minute, year, monthOfYear, DayOfMonth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,25 +43,24 @@ public class newListActivity extends AppCompatActivity {
 
         BindList.timePicker.setOnTimeChangedListener((view, hourOfDay, minute) -> {
             hour = hourOfDay;
-            this.minute = minute;
             Snackbar.make(findViewById(R.id.listLayout), hourOfDay + ":" + minute, Snackbar.LENGTH_SHORT).show();
         });
 
         /*Instance value of Time and Date*/
         hour = BindList.timePicker.getHour();
-        this.minute = BindList.timePicker.getMinute();
-        this.year = BindList.datePicker.getYear();
-        this.monthOfYear = BindList.datePicker.getMonth();
-        this.DayOfMonth = BindList.datePicker.getDayOfMonth();
+        minute = BindList.timePicker.getMinute();
+        year = BindList.datePicker.getYear();
+        monthOfYear = BindList.datePicker.getMonth();
+        DayOfMonth = BindList.datePicker.getDayOfMonth();
 
         BindList.datePicker.setOnDateChangedListener((view, year, monthOfYear, dayOfMonth) -> {
-            this.year = year;
-            this.monthOfYear = monthOfYear;
-            this.DayOfMonth = dayOfMonth;
+            year = year;
+            monthOfYear = monthOfYear;
+            DayOfMonth = dayOfMonth;
             Snackbar.make(findViewById(R.id.listLayout), dayOfMonth + "/" + monthOfYear + "/" + year, Snackbar.LENGTH_SHORT).show();
         });
 
-        BindList.DoneTimer.setOnClickListener(v -> showToast("Alarm of " + hour + ":" + minute + " In " + DayOfMonth + "/" + monthOfYear + "/" + year + " Done."));
+        BindList.DoneTimer.setOnClickListener(v -> Toast.makeText(this, hour, Toast.LENGTH_SHORT));
 
         BindList.CancelTimer.setOnClickListener(v -> {
             BindList.setReminder.setVisibility(View.VISIBLE);

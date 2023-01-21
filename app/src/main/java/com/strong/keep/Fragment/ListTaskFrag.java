@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.strong.keep.Adopter.ListTaskAdopter;
+import com.strong.keep.Adopter.ListAdopter;
 import com.strong.keep.GetSet.listTaskGetter;
 import com.strong.keep.SqlHelper;
 import com.strong.keep.databinding.FragmentRecyclerBinding;
@@ -43,7 +43,7 @@ public class ListTaskFrag extends Fragment {
                 taskList.add(new listTaskGetter(res.getString(0)));
             }
         }
-        ListTaskAdopter taskAdopter = new ListTaskAdopter(taskList, getContext());
+        ListAdopter taskAdopter = new ListAdopter(taskList, getContext());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         RecyclerBind.RecyclerView.setLayoutManager(layoutManager);
         RecyclerBind.RecyclerView.setAdapter(taskAdopter);
