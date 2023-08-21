@@ -1,7 +1,8 @@
 package com.strong.keep.Adopter;
 
+import static com.strong.keep.Fragment.ListTaskFrag.refreshData;
+
 import android.content.Context;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,18 +50,15 @@ public class ListAdopter extends RecyclerView.Adapter<ListAdopter.RecyclerViewHo
             updateList(listGetter);
         });
         sqlHelper = new SqlHelper(context.getApplicationContext());
+
         holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (holder.checkBox.isChecked()) {
                 String ListValue = holder.ListValue.getText().toString();
                 Boolean CheckDelete = sqlHelper.DeleteList("List", ListValue);
                 if (CheckDelete) {
-                    Toast toast = new Toast(context);
-                    TextView text = (TextView) holder.layout.findViewById(R.id.message);
-                    text.setText("Deleted");
-                    toast.setGravity(Gravity.BOTTOM, 0, 10);
-                    toast.setDuration(Toast.LENGTH_SHORT);
-                    toast.setView(holder.layout);
-                    toast.show();
+                    refreshData();
+                    holder.checkBox.setChecked(false);
+                    Toast.makeText(context, "List Deleted", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -72,8 +70,6 @@ public class ListAdopter extends RecyclerView.Adapter<ListAdopter.RecyclerViewHo
     }
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder {
-        LayoutInflater inflater = LayoutInflater.from(itemView.getContext());
-        View layout = inflater.inflate(R.layout.custom_toast, itemView.findViewById(R.id.custom_toast_layout));
         TextView ListValue;
         CheckBox checkBox;
 
@@ -103,6 +99,7 @@ public class ListAdopter extends RecyclerView.Adapter<ListAdopter.RecyclerViewHo
             } else {
                 boolean checkUpdate = sqlHelper.UpdateList("List", previousText, text.getText().toString());
                 if (checkUpdate) {
+                    refreshData();
                     Toast.makeText(context.getApplicationContext(), "List Updated", Toast.LENGTH_SHORT).show();
                     bottomSheetDialog.dismiss();
                 } else

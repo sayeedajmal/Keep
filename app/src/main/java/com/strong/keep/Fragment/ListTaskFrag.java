@@ -21,9 +21,11 @@ import java.util.ArrayList;
 
 public class ListTaskFrag extends Fragment {
 
-    ArrayList<listTaskGetter> taskList;
-    SqlHelper sqlHelper;
+    static ArrayList<listTaskGetter> taskList;
+    static SqlHelper sqlHelper;
     FragmentRecyclerBinding RecyclerBind;
+    @SuppressLint("StaticFieldLeak")
+    static ListAdopter listAdopter;
 
     @SuppressLint("NotifyDataSetChanged")
     @Nullable
@@ -43,25 +45,33 @@ public class ListTaskFrag extends Fragment {
                 taskList.add(new listTaskGetter(res.getString(0)));
             }
         }
-        ListAdopter taskAdopter = new ListAdopter(taskList, getContext());
+        listAdopter = new ListAdopter(taskList, getContext());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         RecyclerBind.RecyclerView.setLayoutManager(layoutManager);
-        RecyclerBind.RecyclerView.setAdapter(taskAdopter);
+        RecyclerBind.RecyclerView.setAdapter(listAdopter);
 
         RecyclerBind.swipeRefresh.setOnRefreshListener(() -> {
-            taskList.clear();
-            Cursor res1 = sqlHelper.SHOW("List");
-            if (res1.getCount() > 0) {
-                while (res1.moveToNext()) {
-                    taskList.add(new listTaskGetter(res1.getString(0)));
-                }
-                taskAdopter.notifyDataSetChanged();
-                RecyclerBind.RecyclerView.refreshDrawableState();
-            }
-            taskAdopter.notifyDataSetChanged();
-            RecyclerBind.RecyclerView.refreshDrawableState();
+            refreshData();
             RecyclerBind.swipeRefresh.setRefreshing(false);
         });
         return RecyclerBind.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        refreshData();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public static void refreshData() {
+        taskList.clear();
+        Cursor res1 = sqlHelper.SHOW("List");
+        if (res1.getCount() > 0) {
+            while (res1.moveToNext()) {
+                taskList.add(new listTaskGetter(res1.getString(0)));
+            }
+        }
+        listAdopter.notifyDataSetChanged();
     }
 }

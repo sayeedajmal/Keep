@@ -1,8 +1,9 @@
 package com.strong.keep.Adopter;
 
+import static com.strong.keep.Fragment.TaskFrag.refreshData;
+
 import android.app.AlertDialog;
 import android.content.Context;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +59,7 @@ public class TaskAdopter extends RecyclerView.Adapter<TaskAdopter.RecyclerViewHo
             updateTask(taskGetter);
         });
         AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+
         holder.deleteTask.setOnClickListener(v -> {
             dialog.setTitle("Delete Task?");
             dialog.setCancelable(true);
@@ -65,14 +67,9 @@ public class TaskAdopter extends RecyclerView.Adapter<TaskAdopter.RecyclerViewHo
             dialog.setPositiveButton("Delete", (dialog1, which) -> {
                 String TaskValue = holder.TaskValue.getText().toString();
                 Boolean CheckDelete = sqlHelper.DeleteTask("Task", TaskValue);
-                TextView text = holder.layout.findViewById(R.id.message);
                 if (CheckDelete) {
-                    Toast toast = new Toast(context);
-                    text.setText("Deleted..");
-                    toast.setGravity(Gravity.BOTTOM, 0, 10);
-                    toast.setDuration(Toast.LENGTH_SHORT);
-                    toast.setView(holder.layout);
-                    toast.show();
+                    refreshData();
+                    Toast.makeText(context, "Task Deleted", Toast.LENGTH_SHORT).show();
                 }
                 dialog1.dismiss();
             });
@@ -121,6 +118,7 @@ public class TaskAdopter extends RecyclerView.Adapter<TaskAdopter.RecyclerViewHo
             } else {
                 boolean checkUpdate = sqlHelper.UpdateTask("Task", TaskSummery, newValue.getText().toString());
                 if (checkUpdate) {
+                    refreshData();
                     Toast.makeText(context.getApplicationContext(), "Task Updated", Toast.LENGTH_SHORT).show();
                     bottomSheetDialog.dismiss();
                 } else
