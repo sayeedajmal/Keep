@@ -38,7 +38,7 @@ public class ListAdopter extends RecyclerView.Adapter<ListAdopter.RecyclerViewHo
     @NonNull
     @Override
     public ListAdopter.RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sample_list, parent, false);
         return new ListAdopter.RecyclerViewHolder(view);
     }
 
@@ -46,9 +46,7 @@ public class ListAdopter extends RecyclerView.Adapter<ListAdopter.RecyclerViewHo
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
         listTaskGetter listGetter = this.taskGetter.get(position);
         holder.ListValue.setText(listGetter.getListValue());
-        holder.itemView.setOnClickListener(e -> {
-            updateList(listGetter);
-        });
+        holder.itemView.setOnClickListener(e -> updateList(listGetter));
         sqlHelper = new SqlHelper(context.getApplicationContext());
 
         holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -83,7 +81,7 @@ public class ListAdopter extends RecyclerView.Adapter<ListAdopter.RecyclerViewHo
 
     private void updateList(listTaskGetter listGetter) {
         bottomSheetDialog = new BottomSheetDialog(context);
-        bottomSheetDialog.setContentView(R.layout.fragment_bottom_dialog);
+        bottomSheetDialog.setContentView(R.layout.dialog_update_fragment);
         //Binding all Buttons
         TextInputEditText text = bottomSheetDialog.findViewById(R.id.TypeList);
         assert text != null;
@@ -106,8 +104,6 @@ public class ListAdopter extends RecyclerView.Adapter<ListAdopter.RecyclerViewHo
                     Toast.makeText(context.getApplicationContext(), "List Not Updated", Toast.LENGTH_SHORT).show();
             }
         });
-
-        Button setReminder = bottomSheetDialog.findViewById(R.id.setReminder);
 
         bottomSheetDialog.show();
         bottomSheetDialog.setOnDismissListener(dialog -> bottomSheetDialog.dismiss());

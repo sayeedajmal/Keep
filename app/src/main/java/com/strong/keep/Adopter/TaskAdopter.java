@@ -55,9 +55,8 @@ public class TaskAdopter extends RecyclerView.Adapter<TaskAdopter.RecyclerViewHo
             return true;
         });
 
-        holder.itemView.setOnClickListener(v -> {
-            updateTask(taskGetter);
-        });
+        holder.itemView.setOnClickListener(v -> updateTask(taskGetter));
+
         AlertDialog.Builder dialog = new AlertDialog.Builder(context);
 
         holder.deleteTask.setOnClickListener(v -> {
@@ -87,8 +86,6 @@ public class TaskAdopter extends RecyclerView.Adapter<TaskAdopter.RecyclerViewHo
     }
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder {
-        LayoutInflater inflater = LayoutInflater.from(itemView.getContext());
-        View layout = inflater.inflate(R.layout.custom_toast, itemView.findViewById(R.id.custom_toast_layout));
         TextView TaskName;
         TextView TaskValue;
         ImageButton deleteTask;
@@ -103,7 +100,7 @@ public class TaskAdopter extends RecyclerView.Adapter<TaskAdopter.RecyclerViewHo
 
     private void updateTask(TaskGetter taskGetter) {
         bottomSheetDialog = new BottomSheetDialog(context);
-        bottomSheetDialog.setContentView(R.layout.fragment_bottom_dialog);
+        bottomSheetDialog.setContentView(R.layout.dialog_update_fragment);
         String TaskSummery = taskGetter.getTaskSummery();
         TextInputEditText newValue = bottomSheetDialog.findViewById(R.id.TypeList);
         assert newValue != null;
@@ -111,6 +108,7 @@ public class TaskAdopter extends RecyclerView.Adapter<TaskAdopter.RecyclerViewHo
 
         Button update = bottomSheetDialog.findViewById(R.id.update);
         sqlHelper = new SqlHelper(context.getApplicationContext());
+
         assert update != null;
         update.setOnClickListener(v -> {
             if (Objects.requireNonNull(newValue.getText()).length() == 0) {

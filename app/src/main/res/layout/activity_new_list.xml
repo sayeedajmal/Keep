@@ -31,11 +31,12 @@
         android:contentDescription="Pin"
         android:foreground="?android:selectableItemBackgroundBorderless"
         android:src="@drawable/pin"
-        app:layout_constraintEnd_toStartOf="@+id/alert"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/list_alarm"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/alert"
+        android:id="@+id/list_alarm"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="45dp"
@@ -82,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/transparent"
-            android:fontFamily="@font/emotion"
+            android:fontFamily="@font/trebuc"
             android:gravity="top|left"
             android:maxLines="25"
             android:minLines="8"
@@ -93,23 +94,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/setReminder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:drawableTint="#009688"
-        android:padding="5dp"
-        android:paddingStart="2dp"
-        android:text="set Reminder"
-        android:textAllCaps="false"
-        android:textSize="15sp"
-        app:backgroundTint="@color/teal_700"
-        app:icon="@drawable/alert15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listLayout" />
-
-    <Button
         android:id="@+id/Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -117,57 +101,10 @@
         android:layout_marginEnd="16dp"
         android:drawableTint="#009688"
         android:padding="0dp"
-        android:text="Done"
+        android:text="ADD"
         android:textSize="15sp"
         app:backgroundTint="@color/teal_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listLayout" />
 
-    <TimePicker
-        android:id="@+id/timePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:timePickerMode="spinner"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backButton" />
-
-    <Button
-        android:id="@+id/CancelTimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:drawableTint="#009688"
-        android:padding="0dp"
-        android:text="Cancel"
-        android:visibility="gone"
-        app:backgroundTint="@color/teal_700"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timePicker" />
-
-    <Button
-        android:id="@+id/DoneTimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:drawableTint="#009688"
-        android:padding="2dp"
-        android:text="Done Timer"
-        android:visibility="gone"
-        app:backgroundTint="@color/teal_700"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timePicker" />
-
-    <DatePicker
-        android:id="@+id/date_picker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:calendarViewShown="false"
-        android:datePickerMode="spinner"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DoneTimer" />
 </androidx.constraintlayout.widget.ConstraintLayout>

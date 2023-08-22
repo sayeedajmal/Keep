@@ -40,21 +40,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_margin="5dp"
-        android:layout_marginEnd="8dp"
         android:autofillHints="name"
         android:clickable="true"
-        app:barrierAllowsGoneWidgets="true"
         android:focusableInTouchMode="true"
-        app:searchIcon="@drawable/search"
+        app:barrierAllowsGoneWidgets="true"
+        app:layout_constraintBottom_toBottomOf="@+id/goLoginButton"
+        app:layout_constraintEnd_toEndOf="@+id/tabLayoutDashboard"
+        app:layout_constraintTop_toTopOf="@+id/goLoginButton"
         app:queryHint="Enter Some Text to Search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goLoginButton" />
-
+        app:searchIcon="@drawable/search" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/dashboardPager"
@@ -68,8 +68,8 @@
 
     <ImageButton
         android:id="@+id/newTaskButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:background="@color/transparent"

@@ -34,29 +34,12 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/setReminder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:drawableTint="#009688"
-        android:paddingStart="2dp"
-        android:text="set Reminder"
-        android:textAllCaps="false"
-        android:textSize="15sp"
-        app:backgroundTint="@color/teal_700"
-        app:icon="@drawable/alert15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listLayout"
-        tools:ignore="RtlSymmetry" />
-
-    <Button
         android:id="@+id/update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:drawableTint="#009688"
-        android:padding="0dp"
-        android:text="Update"
+        android:text="UPDATE"
         android:textSize="15sp"
         app:backgroundTint="@color/teal_700"
         app:layout_constraintEnd_toEndOf="parent"

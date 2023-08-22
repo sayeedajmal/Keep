@@ -36,15 +36,6 @@ public class ListTaskFrag extends Fragment {
         taskList = new ArrayList<>();
         sqlHelper = new SqlHelper(getContext());
 
-        /*taskList.add(new listTaskGetter("Web Development"));*/
-
-        Cursor res = sqlHelper.SHOW("List");
-        if (res.getCount() > 0) {
-            taskList.clear();
-            while (res.moveToNext()) {
-                taskList.add(new listTaskGetter(res.getString(0)));
-            }
-        }
         listAdopter = new ListAdopter(taskList, getContext());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         RecyclerBind.RecyclerView.setLayoutManager(layoutManager);

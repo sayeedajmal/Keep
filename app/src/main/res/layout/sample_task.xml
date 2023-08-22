@@ -6,10 +6,11 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:clickable="true"
+    app:cardPreventCornerOverlap="true"
     android:maxHeight="200dp"
     android:minHeight="100dp"
     android:theme="@style/Theme.Keep"
-    app:cardCornerRadius="20dp">
+    app:cardCornerRadius="15dp">
 
     <TextView
         android:id="@+id/TaskName"

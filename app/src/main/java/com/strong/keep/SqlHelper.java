@@ -20,26 +20,28 @@ public class SqlHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE Task(Title TEXT, TaskValue TEXT)");
-        db.execSQL("CREATE TABLE List(ListValue TEXT)");
+        db.execSQL("CREATE TABLE Task(Title TEXT, TaskValue TEXT, created_time INTEGER)");
+        db.execSQL("CREATE TABLE List(ListValue TEXT, created_time INTEGER)");
     }
 
     /*INSERT VALUES*/
-    public Boolean createTask(String Title, String TaskValue) {
+    public Boolean createTask(String Title, String TaskValue, Integer Time) {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValue = new ContentValues();
         contentValue.put("Title", Title);
         contentValue.put("TaskValue", TaskValue);
+        contentValue.put("created_time", Time);
 
         long result = DB.insert("Task", null, contentValue);
         return result != -1;
     }
 
     /*INSERT LIST*/
-    public Boolean createList(String ListValue) {
+    public Boolean createList(String ListValue, Integer Time) {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("ListValue", ListValue);
+        contentValues.put("created_time", Time);
         long result = DB.insert("List", null, contentValues);
         return result != -1;
     }
@@ -47,13 +49,14 @@ public class SqlHelper extends SQLiteOpenHelper {
     /*SHOW VALUE*/
     public Cursor SHOW(String TableName) {
         SQLiteDatabase DB = this.getWritableDatabase();
-        return DB.rawQuery("select * from " + TableName, null);
+        return DB.rawQuery("select * from " + TableName + " ORDER BY created_time DESC", null);
     }
 
     /*Search Task*/
-    public String searchTask(String TableName){
+    public String searchTask(String TableName) {
         return "Select";
     }
+
     /*Delete Task*/
     public Boolean DeleteTask(String TableName, String TaskValue) {
         SQLiteDatabase DB = this.getWritableDatabase();
@@ -77,21 +80,23 @@ public class SqlHelper extends SQLiteOpenHelper {
     }
 
     /* Update Task*/
-    public Boolean UpdateTask(String TableName, String PreviousValues, String NewValue){
-        SQLiteDatabase DB=this.getWritableDatabase();
-        ContentValues values=new ContentValues();
-        values.put("TaskValue",NewValue);
-        long result=DB.update(TableName, values,"TaskValue=?", new String[]{PreviousValues});
+    public Boolean UpdateTask(String TableName, String PreviousValues, String NewValue) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("TaskValue", NewValue);
+        long result = DB.update(TableName, values, "TaskValue=?", new String[]{PreviousValues});
         return result != -1;
     }
+
     /*:Update List */
-    public Boolean UpdateList(String TableName, String PreviousValue,String newValue){
-        SQLiteDatabase DB=this.getWritableDatabase();
-        ContentValues values=new ContentValues();
+    public Boolean UpdateList(String TableName, String PreviousValue, String newValue) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
         values.put("ListValue", newValue);
-        long result=DB.update(TableName,values,"ListValue=?",new String[]{PreviousValue});
+        long result = DB.update(TableName, values, "ListValue=?", new String[]{PreviousValue});
         return result != -1;
     }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }

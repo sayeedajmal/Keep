@@ -1,18 +1,13 @@
 package com.strong.keep.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.strong.keep.R;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.strong.keep.SqlHelper;
 import com.strong.keep.databinding.ActivityNewTaskBinding;
 
@@ -57,35 +52,29 @@ public class newTaskActivity extends AppCompatActivity {
         newTaskBind.saveButton.setOnClickListener(v -> {
             String Title = Objects.requireNonNull(newTaskBind.Title.getText()).toString();
             String TaskValue = Objects.requireNonNull(newTaskBind.taskValue.getText()).toString();
-            if (!Title.isEmpty() && !TaskValue.isEmpty()) {
-                Boolean checkInsertData = sqlHelper.createTask(Title, TaskValue);
+            long time = System.currentTimeMillis();
+            if (Title.isEmpty()) {
+                newTaskBind.Title.setError("Enter A Title Name");
+                newTaskBind.Title.requestFocus();
+            } else if (TaskValue.isEmpty()) {
+                newTaskBind.taskValue.setError("Enter  Some Task");
+                newTaskBind.taskValue.requestFocus();
+            } else {
+                Boolean checkInsertData = sqlHelper.createTask(Title, TaskValue, (int) time);
                 if (checkInsertData) {
                     showToast("Task Added");
                     finish();
-                } else
-                    showToast("Something Error");
-            } else {
-                showToast("Start Typing for Save");
+                } else showToast("Something Error");
             }
-
         });
         newTaskBind.backbutton.setOnClickListener(v -> onBackPressed());
     }
 
     private void showToast(String Message) {
-        LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_layout));
-        Toast toast = new Toast(getApplicationContext());
-        TextView text = layout.findViewById(R.id.message);
-        text.setText(Message);
-        toast.setGravity(Gravity.BOTTOM, 0, 10);
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(layout);
-        toast.show();
+        Toast.makeText(this, Message, Toast.LENGTH_SHORT).show();
     }
 
     private String getTime() {
-        return new SimpleDateFormat("dd/MM/yyyy - hh:mm a", Locale.getDefault()).format(
-                new Date().getTime());
+        return new SimpleDateFormat("dd/MM/yyyy - hh:mm a", Locale.getDefault()).format(new Date().getTime());
     }
 }

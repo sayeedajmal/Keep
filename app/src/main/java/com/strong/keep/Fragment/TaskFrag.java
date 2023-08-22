@@ -24,6 +24,7 @@ public class TaskFrag extends Fragment {
     static ArrayList<TaskGetter> taskList;
     FragmentRecyclerBinding RecyclerBind;
     static SqlHelper sqlHelper;
+    @SuppressLint("StaticFieldLeak")
     static TaskAdopter taskAdopter;
 
     @Override
