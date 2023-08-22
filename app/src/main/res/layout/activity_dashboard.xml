@@ -9,7 +9,7 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayoutDashboard"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_marginStart="32dp"
         android:background="@color/transparent"
@@ -27,23 +27,25 @@
         app:tabIndicatorHeight="100dp"
         tools:ignore="MissingConstraints" />
 
-    <ImageButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/goLoginButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="35dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:background="@color/transparent"
-        android:foreground="?android:selectableItemBackgroundBorderless"
-        android:padding="3dp"
         android:src="@drawable/login"
+        app:backgroundTint="@color/teal_700"
+        app:fabCustomSize="45dp"
+        app:layout_constraintBottom_toTopOf="@+id/dashboardPager"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/teal_200" />
 
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_margin="5dp"
         android:autofillHints="name"
@@ -51,30 +53,34 @@
         android:focusableInTouchMode="true"
         app:barrierAllowsGoneWidgets="true"
         app:layout_constraintBottom_toBottomOf="@+id/goLoginButton"
-        app:layout_constraintEnd_toEndOf="@+id/tabLayoutDashboard"
+        app:layout_constraintEnd_toStartOf="@+id/goLoginButton"
         app:layout_constraintTop_toTopOf="@+id/goLoginButton"
-        app:queryHint="Enter Some Text to Search"
+        app:queryHint="Enter Text"
         app:searchIcon="@drawable/search" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/dashboardPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="5dp"
         android:theme="@style/Theme.Keep"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
-    <ImageButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/newTaskButton"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:background="@color/transparent"
-        android:scaleType="centerInside"
-        android:src="@drawable/plus"
+        android:src="@drawable/ic_todo"
+        android:tint="@color/teal_200"
+        app:backgroundTint="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="@color/teal_200" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

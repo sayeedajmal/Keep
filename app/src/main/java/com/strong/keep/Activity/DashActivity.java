@@ -2,6 +2,7 @@ package com.strong.keep.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -58,6 +59,7 @@ public class DashActivity extends AppCompatActivity {
     }
 
     private void initSearch() {
+        BindRecent.searchView.setOnSearchClickListener(view -> BindRecent.tabLayoutDashboard.setVisibility(View.INVISIBLE));
         BindRecent.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -69,6 +71,10 @@ public class DashActivity extends AppCompatActivity {
                 System.out.println("<<<<<<<<<<<<<" + newText);
                 return true;
             }
+        });
+        BindRecent.searchView.setOnCloseListener(() -> {
+            BindRecent.tabLayoutDashboard.setVisibility(View.VISIBLE);
+            return false;
         });
     }
 
