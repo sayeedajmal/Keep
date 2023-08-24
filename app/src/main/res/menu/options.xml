@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/copyText"
+        android:icon="@drawable/ic_copy"
+        android:iconTint="@color/teal_700"
+        android:title="Copy"
+        app:tint="@color/teal_700" />
+
+    <item
+        android:id="@+id/deleteTask"
+        android:icon="@drawable/ic_delete"
+        android:iconTint="@color/teal_700"
+        android:title="Delete"
+        app:tint="@color/teal_700" />
+</menu>

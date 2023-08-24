@@ -2,13 +2,17 @@ package com.strong.keep.Adopter;
 
 import static com.strong.keep.Fragment.TaskFrag.refreshData;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,33 +55,58 @@ public class TaskAdopter extends RecyclerView.Adapter<TaskAdopter.RecyclerViewHo
         holder.TaskValue.setText(taskGetter.getTaskSummery());
 
         holder.itemView.setOnLongClickListener(v -> {
-            holder.deleteTask.setVisibility(View.VISIBLE);
+            showMenu(v, taskGetter.getTaskSummery(), holder.TaskValue.getText().toString());
             return true;
         });
 
         holder.itemView.setOnClickListener(v -> updateTask(taskGetter));
 
-        AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+    }
 
-        holder.deleteTask.setOnClickListener(v -> {
-            dialog.setTitle("Delete Task?");
-            dialog.setCancelable(true);
-            dialog.setMessage("Do You Want to Delete Task?");
-            dialog.setPositiveButton("Delete", (dialog1, which) -> {
-                String TaskValue = holder.TaskValue.getText().toString();
-                Boolean CheckDelete = sqlHelper.DeleteTask("Task", TaskValue);
-                if (CheckDelete) {
-                    refreshData();
-                    Toast.makeText(context, "Task Deleted", Toast.LENGTH_SHORT).show();
-                }
-                dialog1.dismiss();
-            });
-            dialog.setNegativeButton("No", (dialog2, which) -> dialog2.cancel());
-            AlertDialog alert = dialog.create();
-            holder.deleteTask.setVisibility(View.INVISIBLE);
-            alert.show();
+    @SuppressLint("NonConstantResourceId")
+    private void showMenu(View view, String TaskValue, String TaskName) {
+        PopupMenu menu = new PopupMenu(context, view);
+        MenuInflater inflater = menu.getMenuInflater();
+
+        inflater.inflate(R.menu.options, menu.getMenu());
+        menu.show();
+
+        menu.setOnMenuItemClickListener(menuItem1 -> {
+            switch (menuItem1.getItemId()) {
+                case R.id.copyText:
+                    copyTask(TaskValue);
+                    Toast.makeText(context, "Copied", Toast.LENGTH_SHORT).show();
+                    return true;
+                case R.id.deleteTask:
+                    DeleteTask(TaskName);
+                    return true;
+                default:
+                    return false;
+            }
         });
+    }
 
+    private void copyTask(String task) {
+        ClipboardManager manager = context.getSystemService(ClipboardManager.class);
+        ClipData data = ClipData.newPlainText("Keep", task);
+        manager.setPrimaryClip(data);
+
+    }
+
+    private void DeleteTask(String TaskValue) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+        dialog.setTitle("Delete Task?");
+        dialog.setCancelable(true);
+        dialog.setMessage("Do You Want to Delete Task?");
+        dialog.setPositiveButton("Delete", (dialog1, which) -> {
+            Boolean CheckDelete = sqlHelper.DeleteTask("Task", TaskValue);
+            if (CheckDelete) Toast.makeText(context, "Task Deleted", Toast.LENGTH_SHORT).show();
+            refreshData();
+            dialog1.dismiss();
+        });
+        dialog.setNegativeButton("No", (dialog2, which) -> dialog2.cancel());
+        AlertDialog alert = dialog.create();
+        alert.show();
     }
 
     @Override
@@ -88,13 +117,11 @@ public class TaskAdopter extends RecyclerView.Adapter<TaskAdopter.RecyclerViewHo
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder {
         TextView TaskName;
         TextView TaskValue;
-        ImageButton deleteTask;
 
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
             TaskName = itemView.findViewById(R.id.TaskName);
             TaskValue = itemView.findViewById(R.id.TaskValue);
-            deleteTask = itemView.findViewById(R.id.deleteTask);
         }
     }
 
